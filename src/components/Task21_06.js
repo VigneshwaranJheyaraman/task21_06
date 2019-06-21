@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import CssPreprocess from './CSSPreproces';
 import AutoComplete from './AutoComplete';
+import DropDown from './DropDown';
+import Toogler from './ToggleButton';
 class AllTask extends Component
 {
     render()
@@ -12,6 +14,8 @@ class AllTask extends Component
                     <div className="box-area">
                         <AutoComplete />
                     </div>
+                    <DropDown />
+                    <Toogler />
         </div>;
     }
 }

@@ -14,6 +14,14 @@ class AutoComplete extends Component
         };
         this.handleUserInputChange = this.handleUserInputChange.bind(this);
     }
+    componentDidMount()
+    {
+        window.addEventListener("click", (e)=> {e.preventDefault();  document.getElementById("autoComplete").style.display="none";});
+    }
+    componentWillUnmount()
+    {
+        window.removeEventListener("click", (e)=> {e.preventDefault();  document.getElementById("autoComplete").style.display="none";});
+    }
     handleUserInputChange(value, event)
     {
         this.setState({userInput: value});

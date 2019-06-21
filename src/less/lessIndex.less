@@ -1,27 +1,5 @@
 @font-size: 20px;
 @margin_area:30px;
-.inner-box-area
-{
-    width:100%;
-    background-color: burlywood;
-    margin : @margin_area - 20px;
-}
-.box-area
-{
-    width:100%;
-    margin-right: @margin_area;
-    margin-left: @margin_area;
-    margin-top: @margin_area - 15px;
-    margin-bottom: @margin_area - 10px;
-}
-.box-area input
-{
-    width: 100%;
-    font-size: 20px;
-    border: 1px outset;
-    text-align: left;
-    padding: 7px;
-} 
 .colorChooser(@color)
 {
     background-color: @color;
@@ -45,6 +23,97 @@
 .sample-container
 {
     font-size: @font-size;
+}.inner-box-area
+{
+    width:100%;
+    background-color: burlywood;
+    margin : @margin_area - 20px;
+}
+.box-area
+{
+    width:100%;
+    margin-right: @margin_area;
+    margin-left: @margin_area;
+    margin-top: @margin_area - 15px;
+    margin-bottom: @margin_area - 10px;
+}
+.box-area input
+{
+    width: 100%;
+    font-size: 20px;
+    border: 1px outset;
+    text-align: left;
+    padding: 7px;
+}
+.box-area .inner-box-area .selector
+{
+    text-align: center;
+}
+.selector
+{
+    width:50%;
+    padding:10px;
+    margin:@margin_area - 20;
+}
+.selector option
+{
+    color: .colorChooser(red);
+    padding: 10px;
+}
+.toggler
+{
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+.toggler input
+{
+    opacity: 0;
+    width: 0px;
+    height: 0px;
+}
+.toggleSlide
+{
+    position: absolute;
+    cursor: pointer;
+    top:0;
+    left:0;
+    bottom:0;
+    right: 0;
+    background-color: #000;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+.toggleSlide:before
+{
+    position: absolute;
+    content: "";
+    width: 26px;
+    height: 26px;
+    left:4px;
+    bottom:4px;
+    background-color: gray;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+input:checked+ .toggleSlide
+{
+    background-color: greenyellow;
+}
+input:focus + .toggleSlide
+{
+    box-shadow: 0 0 1px red;
+}
+input:checked + .toggleSlide::before
+{
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+.box-area .inner-box-area
+{
+    text-align: center;
 }
 @media (min-width:576px)
 {
