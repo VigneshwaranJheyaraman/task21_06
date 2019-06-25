@@ -1,125 +1,13 @@
-.bg-red {
-  background-color: red;
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
-.bg-green {
-  background-color: green;
-}
-.bg-yellow {
-  background-color: yellow;
-}
-.sample-container {
-  font-size: 20px;
-}
-.inner-box-area {
-  width: 100%;
-  background-color: burlywood;
-  margin: 10px;
-}
-.box-area {
-  width: 100%;
-  margin-right: 30px;
-  margin-left: 30px;
-  margin-top: 15px;
-  margin-bottom: 20px;
-}
-.box-area input {
-  width: 100%;
-  font-size: 20px;
-  border: 1px outset;
-  text-align: left;
-  padding: 7px;
-}
-.box-area .inner-box-area .selector {
-  text-align: center;
-}
-.selector {
-  width: 50%;
-  padding: 10px;
-  margin: 10px;
-}
-.selector option {
-  color: [object Object];
-  padding: 10px;
-}
-.toggler {
-  position: relative;
-  display: inline-block;
-  width: 60px;
-  height: 34px;
-}
-.toggler input {
-  opacity: 0;
-  width: 0px;
-  height: 0px;
-}
-.toggleSlide {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  background-color: #000;
-  -webkit-transition: 0.4s;
-  transition: 0.4s;
-}
-.toggleSlide:before {
-  position: absolute;
-  content: "";
-  width: 26px;
-  height: 26px;
-  left: 4px;
-  bottom: 4px;
-  background-color: gray;
-  -webkit-transition: 0.4s;
-  transition: 0.4s;
-}
-input:checked + .toggleSlide {
-  background-color: greenyellow;
-}
-input:focus + .toggleSlide {
-  box-shadow: 0 0 1px red;
-}
-input:checked + .toggleSlide::before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
-}
-.box-area .inner-box-area {
-  text-align: center;
-}
-@media (min-width: 576px) {
-  .sample-container,
-  .box-area,
-  .inner-box-area {
-    width: 520px;
-  }
-}
-@media (min-width: 768px) {
-  .sample-container,
-  .box-area,
-  .inner-box-area {
-    width: 720px;
-  }
-}
-@media (min-width: 992px) {
-  .sample-container,
-  .box-area,
-  .inner-box-area {
-    width: 920px;
-  }
-}
-@media (min-width: 1200px) {
-  .sample-container,
-  .box-area,
-  .inner-box-area {
-    width: 1140px;
-  }
-}
-@media (min-width: 1640px) {
-  .sample-container,
-  .box-area,
-  .inner-box-area {
-    width: 1600px;
-  }
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
 }

@@ -1,14 +1,28 @@
-.bg-red {
-  background-color: red;
+@margin_area : 30px;
+.colorChoose(@color)
+{
+  background-color:@color;
 }
-.bg-green {
-  background-color: green;
+.setMinWidth(@w)
+{
+  width:@w;
 }
-.bg-yellow {
-  background-color: yellow;
+@font-size:20px;
+.bg-red
+{
+  .colorChoose(red);
 }
-.sample-container {
-  font-size: 20px;
+.bg-green
+{
+  .colorChoose(green);
+}
+.bg-yellow
+{
+  .colorChoose(yellow);
+}
+.sample-container
+{
+  font-size: @font-size;
 }
 .inner-box-area {
   width: 100%;
@@ -17,15 +31,15 @@
 }
 .box-area {
   width: 100%;
-  margin-right: 30px;
-  margin-left: 30px;
-  margin-top: 30px -15;
-  margin-bottom: 10px;
+  margin-right: @margin_area;
+  margin-left: @margin_area;
+  margin-top: @margin_area -15;
+  margin-bottom: @margin_area - 20;
   position: relative;
 }
 #ac {
   width: 90%;
-  font-size: 20px;
+  font-size: @font-size;
   border: 1px outset;
   text-align: left;
   padding: 7px;
@@ -36,10 +50,10 @@
 .selector {
   width: 50%;
   padding: 10px;
-  margin: 30px -20;
+  margin: @margin_area -20;
 }
 .selector option {
-  background-color: orange;
+  .colorChoose(orange);
   padding: 10px;
 }
 .toggle {
@@ -89,46 +103,43 @@
 .box-area .inner-box-area {
   text-align: center;
 }
-.auto-complete-list {
-  display: block;
-  position: absolute;
-  border: 1px solid #d4d4d4;
-  border-bottom: none;
-  border-top: none;
-  z-index: 99;
-  top: 100%;
-  left: 0;
-  right: 0;
-  width: 30%;
+.auto-complete-list
+{
+    display: block;
+    position: absolute;
+    border: 1px solid #d4d4d4;
+    border-bottom: none;
+    border-top: none;
+    z-index: 99;
+    top: 100%;
+    left: 0;
+    right: 0;
+    width: 30%;
 }
-.auto-complete-list div {
+.auto-complete-list div
+{
   padding: 10px;
   cursor: pointer;
-  background-color: #fff;
-  border-bottom: 1px solid #d4d4d4;
+  background-color: #fff; 
+  border-bottom: 1px solid #d4d4d4; 
 }
 @media (min-width: 576px) {
-  .sample-container {
-    width: 540px;
+  .sample-container {.setMinWidth(540px);
   }
 }
 @media (min-width: 768px) {
-  .sample-container {
-    width: 720px;
+  .sample-container {.setMinWidth(720px);
   }
 }
 @media (min-width: 992px) {
-  .sample-container {
-    width: 960px;
+  .sample-container {.setMinWidth(960px);
   }
 }
 @media (min-width: 1200px) {
-  .sample-container {
-    width: 1140px;
+  .sample-container { .setMinWidth(1140px);
   }
 }
 @media (min-width: 1640px) {
-  .sample-container {
-    width: 1600px;
+  .sample-container {.setMinWidth(1600px);
   }
 }

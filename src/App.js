@@ -1,7 +1,6 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import AllTask from './components/Task21_06';
+import AllTask from './components/AllTask';
 
 function App() {
   return <AllTask />;

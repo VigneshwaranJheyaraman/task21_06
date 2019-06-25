@@ -24,8 +24,8 @@ class DropDown extends Component
         return (<div className="box-area">
             <div className="inner-box-area">
                 <select onChange={(e) => {this.onOptionSelected(e.target.value)}} className="selector">
-                    {this.state.lists.map((v) => {
-                        return <option>{v}</option>;
+                    {this.state.lists.map((v,i) => {
+                        return <option key={i}>{v}</option>;
                     })}
                 </select>
             </div>
