@@ -16,7 +16,15 @@ class AutoComplete extends Component
         this.handleUserInputChange = this.handleUserInputChange.bind(this);
         this.handleSuggestionClick = this.handleSuggestionClick.bind(this);
     }
-    componentWillMount()
+    componentWillReceiveProps(props)
+    {
+        if(this.props.searchValue !== props.searchValue)
+        {
+            this.props = props;
+            this.updateParent();
+        }
+    }
+    updateParent()
     {
         if(this.props.searchValue !== "")
         {
@@ -27,7 +35,9 @@ class AutoComplete extends Component
     {
         if(value !== "")
         {
-            this.setState({userInput: value, recommended_Fruits:[]});
+            this.setState({userInput: value, recommended_Fruits:[]}, ()=> {
+                this.props.onSearching(this.state.userInput);
+            });
             let previous_elems = this.state.recommended_Fruits;
             Object.values(this.state.fruits).forEach((v)=>
             {
@@ -54,7 +64,7 @@ class AutoComplete extends Component
     render()
     {
         return (<div className="box-area">
-            <input type="text" id="ac" onInput={(e) => {this.handleUserInputChange(e.target.value, e)}} placeholder="Fruits" />
+            <input type="text" id="ac" onInput={(e) => {this.handleUserInputChange(e.target.value, e)}} placeholder={this.props.autoCompletePlaceHolder} />
             <div className="auto-complete-list" id="autoComplete">
                 {this.state.recommended_Fruits.map((v,i) => {
                     return <div className="results" key={i} onClick={(e)=> {this.handleSuggestionClick(e.target.innerHTML)}}>{v}</div>

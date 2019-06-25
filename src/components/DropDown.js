@@ -17,7 +17,7 @@ class DropDown extends Component
     }
     onOptionSelected(selected_value)
     {
-        alert("The value you selected is "+ selected_value);
+        // alert("The value you selected is "+ selected_value);
         this.props.onSelected("The value you selected is "+ selected_value);
     }
     render()
@@ -26,7 +26,9 @@ class DropDown extends Component
             <div className="inner-box-area">
                 <select onChange={(e) => {this.onOptionSelected(e.target.value)}} className="selector">
                     {Object.values(this.state.lists).map((v,i) => {
-                        return <option key={i}>{v}</option>;
+                        return <option key={i}
+                        style={{backgroundColor:this.props.dropDownInnerColor !== ""?this.props.dropDownInnerColor:"orange"}}>
+                        {v}</option>;
                     })}
                 </select>
             </div>

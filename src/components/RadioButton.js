@@ -19,7 +19,9 @@ class RadioButton extends Component {
         this.handleClick = this.handleClick.bind(this);
     }
     handleClick(i,e) {
-        this.setState({ checked: i });
+        this.setState({ checked: i }, ()=> {
+            this.props.onSelected(Object.entries(this.state.radioOptions)[i][1]);
+        });
     }
     render() {
         return (
