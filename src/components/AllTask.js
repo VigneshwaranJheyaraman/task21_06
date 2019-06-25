@@ -4,6 +4,7 @@ import AutoComplete from './AutoComplete';
 import DropDown from './DropDown';
 import Toogler from './Toogler';
 import RadioButton from './RadioButton';
+import Animate from './Animate';
 class AllTask extends Component
 {
     constructor(props)
@@ -17,12 +18,14 @@ class AllTask extends Component
             dropDownOpt:{}, 
             dropDownRes:{}, 
             autoCompPlaceHolder:"",
-            radioRes:''
+            radioRes:'',
+            currentToggle:''
         };
         this.searchCompleted = this.searchCompleted.bind(this);
         this.handleDropDownSelection = this.handleDropDownSelection.bind(this);
         this.updateSearchInput = this.updateSearchInput.bind(this);
         this.updateRadioResult = this.updateRadioResult.bind(this);
+        this.getToggleDetails = this.getToggleDetails.bind(this);
     }
     componentWillMount()
     {
@@ -42,7 +45,7 @@ class AllTask extends Component
     }
     handleDropDownSelection(selection)
     {
-        this.setState({dropDownRes: selection},() => {console.log(this.state)});
+        this.setState({dropDownRes: selection},() => {console.log(this.state.dropDownRes)});
     }
     updateSearchInput(value)
     {
@@ -51,6 +54,12 @@ class AllTask extends Component
     updateRadioResult(radioVal)
     {
         this.setState({radioRes: radioVal}, ()=>{console.log("The radio values is " + this.state.radioRes)});
+    }
+    getToggleDetails(v)
+    {
+        this.setState({currentToggle:v}, ()=>{
+            console.log(this.state.currentToggle);
+        });
     }
     render()
     {
@@ -62,9 +71,10 @@ class AllTask extends Component
                     <div className="box-area">
                         <CssPreprocess />
                     </div>
-                    <Toogler />
+                    <Toogler onUpdate={this.getToggleDetails}/>
                     <DropDown dropDownData={this.state.dropDownOpt} onSelected={this.handleDropDownSelection}
                     dropDownInnerColor="cyan"/>
+                    <Animate imageSource={"https://sap.github.io/ui5-webcomponents/images/react.svg"} />
                 </div>;
     }
 }
