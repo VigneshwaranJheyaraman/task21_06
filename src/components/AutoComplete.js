@@ -6,15 +6,22 @@ class AutoComplete extends Component
         super(props);
         this.state = {
             userInput: '',
-             fruits:[
-            'Apple', 'Orange', 'Strawberry', 'Mango',
-            'Chikku', 'Butterfruit', 'Dragonfruit', 'Watermelon',
-            'Plum', 'Raspberry', 'Blueberry', 'Banana', 'Papaya'
-            ],
+             fruits:Object.values(this.props.autoCompleteData).length > 0?this.props.autoCompleteData:{
+            '1':'Apple', '2':'Orange', '3':'Strawberry', '4':'Mango',
+            '5':'Chikku', '6':'Butterfruit', '7':'Dragonfruit', '8':'Watermelon',
+            '9':'Plum', '10':'Raspberry', '11':'Blueberry', '12':'Banana', '13':'Papaya'
+             },
             recommended_Fruits: []
         };
         this.handleUserInputChange = this.handleUserInputChange.bind(this);
         this.handleSuggestionClick = this.handleSuggestionClick.bind(this);
+    }
+    componentWillMount()
+    {
+        if(this.props.searchValue !== "")
+        {
+            this.props.onSearchFinished(Object.values(this.state.fruits).find((elem) => {return elem.toLowerCase() === this.props.searchValue.toLowerCase()}));
+        }
     }
     handleUserInputChange(value, event)
     {
@@ -22,7 +29,7 @@ class AutoComplete extends Component
         {
             this.setState({userInput: value, recommended_Fruits:[]});
             let previous_elems = this.state.recommended_Fruits;
-            this.state.fruits.forEach((v)=>
+            Object.values(this.state.fruits).forEach((v)=>
             {
                 if(value.toUpperCase() === v.substr(0, value.length).toUpperCase())
                 {

@@ -9,7 +9,9 @@ class AllTask extends Component
     constructor(props)
     {
         super(props);
-        this.state = {radioOutput:{},radioOpt:{}, autoCompSearch:'',autoCompOpt:{}, dropDownOpt:{}, dropDownRes:{}};
+        this.state = {radioOpt:{}, autoCompSearch:'',autoCompOpt:{}, dropDownOpt:{}, dropDownRes:{}};
+        this.searchCompleted = this.searchCompleted.bind(this);
+        this.handleDropDownSelection = this.handleDropDownSelection.bind(this);
     }
     componentWillMount()
     {
@@ -18,19 +20,35 @@ class AllTask extends Component
             'B':'Ball',
             '1':'One',
             '3':'Three'
+        };
+        this.setState({radioOpt: temp_opt, autoCompOpt:temp_opt, dropDownOpt:temp_opt});
+    }
+    searchCompleted(returnValue)
+    {
+        if(returnValue !== "" && returnValue !== undefined)
+        {
+            this.setState({autoCompSearch: returnValue}, () => {console.log(this.state.autoCompSearch)});
         }
-        this.setState({radioOpt: temp_opt})
+        else
+        {
+            this.setState({autoCompSearch: "No result found"}, () => {console.log(this.state.autoCompSearch)});
+        }
+    }
+    handleDropDownSelection(selection)
+    {
+        this.setState({dropDownRes: selection},() => {console.log(this.state)});
     }
     render()
     {
         return  <div className="box-area" style={{margin:"10px"}}>
-                    <AutoComplete />
+                    <AutoComplete searchValue="apple" onSearchFinished= {this.searchCompleted}
+                        autoCompleteData={this.state.autoCompOpt}/>
                     <RadioButton radOpt={this.state.radioOpt}/>
                     <div className="box-area">
                         <CssPreprocess />
                     </div>
                     <Toogler />
-                    <DropDown />
+                    <DropDown dropDownData={this.state.dropDownOpt} onSelected={this.handleDropDownSelection}/>
                 </div>;
     }
 }
